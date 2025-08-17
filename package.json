@@ -1,0 +1,25 @@
+{
+  "name": "cloud-town-wiki",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "1.8.0",
+    "eslint": "^9.0.0",
+    "nuxt": "^3.17.6",
+    "nuxt-component-meta": "^0.13.1",
+    "shadcn-docs-nuxt": "^1.1.1",
+    "sharp": "^0.34.3",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
