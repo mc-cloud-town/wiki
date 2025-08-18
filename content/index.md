@@ -9,7 +9,13 @@ actions:
   - name: GitHub
     variant: outline
     to: https://github.com/mc-cloud-town/wiki
+    target: _blank
     leftIcon: lucide:github
+  - name: Discord
+    variant: outline
+    to: https://discord.gg/H6uHghNq5Z
+    target: _blank
+    leftIcon: simple-icons:discord
 ---
 
 #title
