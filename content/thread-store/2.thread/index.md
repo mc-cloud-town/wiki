@@ -205,3 +205,50 @@ public void populate(int x, int z) { // [!code focus]
 ```
 
 在世界裝飾時的方塊變更和玩家或活塞變更方塊並無本質上的區別，因此若在這個新執行緒中執行放置方塊等操作，就會導致異步的方塊更新，也就是說若我們使用偵測器檢測到此異步的方塊更新，就會生成異步偵測器 (如何獲取將在下篇文章說明 \[如果沒看到就是還在寫不然就是鴿了])。
+
+## 簡單描述
+
+在 Minecraft `1.12` 中，染色玻璃在放置或破壞時，會透過 `BlockBeacon.updateColorAsync` 在 `非主執行緒` 更新烽火台的顏色。
+
+這個異步更新會呼叫 `world.getChunk()` 取得區塊，如果該區塊尚未生成，會觸發 區塊生成與裝飾（例如生成水、岩漿、地牢等結構）。
+
+由於這些操作不是在主執行緒執行，會造成 `異步方塊更新`，也就是方塊狀態在非同步環境下改變，可能被偵測到並生成 `異步偵測器`。
+
+換句話說，放置或破壞染色玻璃，可能間接觸發世界生成與裝飾的非同步操作，這是異步線程獲取的核心問題。
+
+::mermaid
+```text
+flowchart TD
+  A[放置或破壞染色玻璃] --> B[呼叫 BlockBeacon.updateColorAsync]
+  B --> C[建立非主執行緒執行]
+  C --> D["取得區塊 world.getChunk()"]
+  D --> E{區塊是否已生成？}
+  E -- 否 --> F["生成區塊 chunkGenerator.generateChunk()"]
+  F --> G["區塊裝飾 chunk.populate()"]
+  E -- 是 --> G
+  G --> H{生成水或岩漿等裝飾方塊?}
+  H -- 是 --> I["執行 world.setBlockState (非主線程)"]
+  H -- 否 --> J[其他裝飾]
+  I --> K[非同步方塊更新被偵測]
+  J --> K
+  K --> L[可能觸發異步偵測器或遊戲異常]
+```
+::
+
+::div{class="bg-white px-2"}
+  ::mermaid
+  ```text
+  gantt
+    title Minecraft 執行續
+    dateFormat X
+    axisFormat %s
+
+    section 主線程
+    50   : 0, 8
+    section 二號線程
+    正常檢索   : 1, 3
+    section 三號線程...
+    使用長偵測器造成巨量更新時   : 1, 8
+  ```
+  ::
+::
