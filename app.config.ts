@@ -16,7 +16,7 @@ export default defineAppConfig({
 
     aside: { useLevel: true, collapse: false },
     search: { enable: true, inAside: false },
-    theme: { customizable: true, color: 'zinc', radius: 0.5 },
+    theme: { customizable: true, color: 'green', radius: 0.5 },
 
     header: {
       title: 'CTEC - WiKi',

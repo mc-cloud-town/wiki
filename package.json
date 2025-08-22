@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/eslint": "1.8.0",
     "eslint": "^9.0.0",
+    "mermaid": "^11.10.0",
     "nuxt": "^3.17.6",
     "nuxt-component-meta": "^0.13.1",
     "shadcn-docs-nuxt": "^1.1.1",
