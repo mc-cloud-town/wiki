@@ -39,7 +39,7 @@ export default defineAppConfig({
       links: [],
     },
     footer: {
-      credits: 'Copyright © 2025 CTEC - WiKi',
+      credits: 'WiKi Copyright © 2025 CTEC',
       links: [
         {
           icon: 'lucide:github',
@@ -52,13 +52,13 @@ export default defineAppConfig({
       enable: true,
       links: [
         {
-          title: 'Star on GitHub',
+          title: '按個星星給我們吧!!',
           icon: 'lucide:star',
           to: 'https://github.com/mc-cloud-town/wiki',
           target: '_blank',
         },
         {
-          title: 'Create Issues',
+          title: '問題提交',
           icon: 'lucide:circle-dot',
           to: 'https://github.com/mc-cloud-town/wiki/issues',
           target: '_blank',
