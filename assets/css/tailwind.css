@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './custom.css';
 
 @config '../../tailwind.config.js';
 /* If you are using shadcn-docs-nuxt in a monorepo, change the amount of .. to match the node_modules directory */
