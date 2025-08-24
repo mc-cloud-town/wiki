@@ -3361,6 +3361,16 @@
     "@unhead/schema" "1.11.20"
     "@unhead/shared" "1.11.20"
 
+"@unhead/schema-org@^2.0.11":
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/@unhead/schema-org/-/schema-org-2.0.14.tgz#94e22800bf145482e8705563e52e0b79f1ba11aa"
+  integrity sha512-ha28OIR7/kXRtWijSBUxEyFGmUv54i6n5128jJBMpa8XZcbF7arz4eopH7rxlADYvNn+zPlJah103uL1NaCgaw==
+  dependencies:
+    defu "^6.1.4"
+    ohash "^2.0.11"
+    ufo "^1.6.1"
+    unhead "2.0.14"
+
 "@unhead/schema@1.11.20", "@unhead/schema@^1.7.0":
   version "1.11.20"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.20.tgz#e4341832a203b990380df906391e9039501257fa"
@@ -8631,6 +8641,19 @@ nuxt-og-image@^5.1.8:
     unplugin "^2.3.5"
     unwasm "^0.3.9"
     yoga-wasm-web "^0.3.3"
+
+nuxt-schema-org@5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/nuxt-schema-org/-/nuxt-schema-org-5.0.6.tgz#d91f6f26c4f267822adc8744e59a418f49dd5b34"
+  integrity sha512-ssNYeb/bARsTgbkIB+EdpXkwtX/+TKb/3vd0KxE6xuu60A4h4OCNwUnJhVhkpaLa+ry8nKDk30FUpgWdJyzNHA==
+  dependencies:
+    "@nuxt/kit" "^3.17.5"
+    "@unhead/schema-org" "^2.0.11"
+    defu "^6.1.4"
+    nuxt-site-config "^3.2.2"
+    pathe "^2.0.3"
+    pkg-types "^2.1.0"
+    sirv "^3.0.1"
 
 nuxt-site-config-kit@3.2.2:
   version "3.2.2"
