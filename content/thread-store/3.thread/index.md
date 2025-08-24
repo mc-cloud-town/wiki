@@ -219,23 +219,38 @@ public void populate(int x, int z) { // [!code focus]
 ::mermaid
 ```text
 flowchart TD
-  A[放置或破壞染色玻璃] --> B[呼叫 BlockBeacon.updateColorAsync]
-  B --> C[建立非主執行緒執行]
-  C --> D["取得區塊 world.getChunk()"]
-  D --> E{區塊是否已生成？}
-  E -- 否 --> F["生成區塊 chunkGenerator.generateChunk()"]
-  F --> G["區塊裝飾 chunk.populate()"]
-  E -- 是 --> G
-  G --> H{生成水或岩漿等裝飾方塊?}
-  H -- 是 --> I["執行 world.setBlockState (非主線程)"]
-  H -- 否 --> J[其他裝飾]
-  I --> K[非同步方塊更新被偵測]
-  J --> K
-  K --> L[可能觸發異步偵測器或遊戲異常]
+  subgraph Main [主執行緒]
+    A[當 放置或破壞染色玻璃] --> B[呼叫 BlockBeacon.updateColorAsync]
+    B --> C[建立非主執行緒]
+  end
+
+  subgraph Async [異步執行緒]
+    D["取得區塊 world.getChunk()"] --> E{區塊已生成?}
+
+    E -- 是 --> F[執行烽火台邏輯]
+    E -- 否 --> G["生成區塊 chunkGenerator.generateChunk()"]
+
+    G --> H["區塊裝飾 chunk.populate()"]
+    H --> I[生成水/岩漿等裝飾方塊]
+  end
+
+  subgraph Note1["若使用偵測器偵測方出的水就會產生異步偵測器，若連接的很多，服務器就無法再短時間處理完(因為生成區塊時會短暫開啟 ITT 偵測器會以指數級更新)，線程步會很快退出"]
+    direction TB
+  end
+
+  Note1 --- I
+
+  C --> D
+  I --> F
+  F --> L[關閉線程]
 ```
 ::
 
-::div{class="bg-white px-2"}
+::alert{type="note" icon="lucide:pencil"}
+若還不知道 `ITT` 是啥，罰你回去複習 [這篇文章](/thread-store/rule/scheduledupdatesareimmediate)。
+::
+
+::div{class="bg-white px-2 mt-4"}
   ::mermaid
   ```text
   gantt
