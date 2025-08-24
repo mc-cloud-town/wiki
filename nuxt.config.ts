@@ -46,4 +46,17 @@ export default defineNuxtConfig({
       'Work+Sans:ital:400',
     ],
   },
+
+  $production: {
+    scripts: {
+      registry: {
+        googleAnalytics: {
+          id: 'G-KFF06SNENT',
+        },
+        googleAdsense: {
+          client: 'ca-pub-5347413959647279',
+        },
+      },
+    },
+  },
 });
