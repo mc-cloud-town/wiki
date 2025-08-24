@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@nuxt/eslint": "1.8.0",
+    "@nuxtjs/robots": "5.5.0",
+    "@nuxtjs/sitemap": "7.4.3",
     "eslint": "^9.0.0",
     "mermaid": "^11.10.0",
     "nuxt": "^3.17.6",

@@ -26,6 +26,5 @@ actions:
 ::
 
 ::div
-  ::img{src="https://mc-ctec.org/assets/CTEC_Sort-CPNLCe-1.webp" class="mx-auto"}
-  ::
+  :img{src="/CTEC_Sort-CPNLCe-1.png" class="mx-auto"}
 ::
