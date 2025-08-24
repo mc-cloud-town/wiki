@@ -61,15 +61,15 @@ for line in blocks:
 
 result: list[str] = []
 result2: list[str] = []
-for i in range(0xFFFF + 1):
+for i in range(0x2000):
     try:
         block = data[i]
 
-        tmp = f"0x{i:04x} | 0b{i:016b} | {block.id:03d} | {block.blockID:39s} | {block.state}"
+        tmp = f"0x{i:04x} | 0b{i:013b} | {block.id:03d} | {block.blockID:39s} | {block.state}"
         result.append(tmp)
         result2.append(tmp)
     except KeyError:
-        result.append(f"0x{i:04x} | 0b{i:016b} | --- | {'-' * 39} | ---")
+        result.append(f"0x{i:04x} | 0b{i:013b} | --- | {'-' * 39} | ---")
         pass
 
 

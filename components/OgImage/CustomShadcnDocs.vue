@@ -23,7 +23,7 @@
         {{ title }}
       </h1>
       <p
-        class="text-5xl leading-tight"
+        class="text-[2.4rem] leading-tight"
         :class="[colorMode === 'light' ? 'text-zinc-500' : 'text-zinc-400']"
       >
         {{ description }}
