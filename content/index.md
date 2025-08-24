@@ -26,5 +26,5 @@ actions:
 ::
 
 ::div
-  :img{src="/CTEC_Sort-CPNLCe-1.png" class="mx-auto"}
+:img{src="/hero.png" class="mx-auto"}
 ::
