@@ -1,5 +1,6 @@
 ---
-title: Home
+title: CTEC - WiKi
+description: 本網站將收入本鎮的各種公開研究數據，讓大家可以更方便地查閱和了解。
 navigation: false
 ---
 
